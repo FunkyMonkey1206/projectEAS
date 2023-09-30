@@ -27,3 +27,13 @@ function createGrid(size) {
 }
 
 createGrid(gridSize);
+
+const sqr = document.querySelectorAll('div.square');
+
+sqr.forEach((sqr) => {
+
+    sqr.addEventListener('mouseover', ()  => {
+        sqr.classList.add('etch');
+        // sqr.style.backgroundColor = 'blue';
+    });
+});
