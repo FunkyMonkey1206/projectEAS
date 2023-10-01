@@ -7,14 +7,14 @@ const createBtn = document.createElement('button');
 
 //grid size 16x16
 let gridSize = 256;
-let side = 16;
+let side = 16;3
 
 clearBtn.classList.add('clearBtn');
 clearBtn.classList.add('createBtn');
 container.classList.add('container');
+body.appendChild(createBtn);
 body.appendChild(container);
 body.appendChild(clearBtn);
-body.appendChild(createBtn);
 clearBtn.textContent = 'clear';
 createBtn.textContent = 'create';
 
@@ -58,12 +58,21 @@ createGrid(gridSize);
 function enableEtch() {
     var sqr = document.querySelectorAll('div.square');
     sqr.forEach((sqr) => {
-        sqr.addEventListener('mouseover', ()  => {
-            var rgbValue = Math.random() * 100;
-            sqr.classList.add('etch');
-            // sqr.style.cssText = `#${rgbValue}`;
+        sqr.addEventListener('mouseover', function(){
+            // var rgbValue = Math.floor((Math.random() * 10) + 1);
+            // sqr.classList.add('etch');
+            sqr.style.backgroundColor = randomColor();
         });
     });
+};
+
+
+function randomColor() {
+    let color = [];
+    for (let i = 0; i < 3; i++) {
+        color.push(Math.floor(Math.random() * 256));
+    }
+    return 'rgb(' + color.join(', ') + ')';
 };
 
 clearBtn.addEventListener('click', () => {
